@@ -27,3 +27,13 @@ describe('Segundo conjunto de casos de pruebas avanzadas', function(){
         cy.get('#currentAddress').type(this.datos.current_address)
     })
 })
+
+
+
+
+
+
+
+
+
+
