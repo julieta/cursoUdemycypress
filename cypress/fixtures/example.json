@@ -1,0 +1,10 @@
+{
+  "name": "Juan",
+  "last_name": "Torres",
+  "email": "prueba@gmail.com",
+  "gender": "Female",
+  "mobile":"3534123456",
+  "subjects": "prueba",
+  "current_address": "lisandro"
+
+}
