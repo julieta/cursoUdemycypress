@@ -5,6 +5,11 @@
   "gender": "Female",
   "mobile":"3534123456",
   "subjects": "prueba",
-  "current_address": "lisandro"
+  "current_address": "lisandro",
+  "date":[
+    "December",
+    "1990",
+    "31"
+  ]
 
 }
