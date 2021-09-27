@@ -10,6 +10,16 @@
     "December",
     "1990",
     "31"
-  ]
+  ],
+  "materia": "English",
+
+  "hobbies": [
+    "Sports",
+    "Reading",
+    "Music"
+  ],
+
+  "picture": "superpoderosas.png"
+
 
 }

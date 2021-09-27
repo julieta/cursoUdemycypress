@@ -6,7 +6,9 @@ describe('Segundo conjunto de casos de pruebas avanzadas', function(){
         //cargamos los valores del archivo example.json en un objeto de datos
         cy.fixture('example').then(function(datos){
             this.datos = datos
+            cy.fixture(this.datos.picture).as('imagen')
         })
+        
     })
 
     beforeEach(()=>{
@@ -31,7 +33,31 @@ describe('Segundo conjunto de casos de pruebas avanzadas', function(){
             .should('contain.value', this.datos.date[1])
             .should('contain.value', this.datos.date[2])
         cy.get('#currentAddress').type(this.datos.current_address)
-    
+
+        //subject = materia
+        cy.get('.subjects-auto-complete__value-container').type(this.datos.materia) 
+        cy.get('div[id^="react-select-"]').click()
+        cy.get('.subjects-auto-complete__value-container').should('contain.text', this.datos.materia)
+
+        // ratio
+        cy.get('div[class^="custom-control custom-checkbox"]:has(label:contains("'+this.datos.hobbies[0]+'")) input').check({force: true}).should('be.checked')
+        
+        //subida de la imagen -
+        /cy.get('#uploadPicture').then(function($el){
+            
+            const blob = Cypress.Blob.base64StringToBlob(this.imagen, 'image/png')
+ 
+            const file = new File([blob], this.datos.picture, { type: 'image/png' })
+            const list = new DataTransfer()
+
+            list.items.add(file)
+            const myFileList = list.files
+
+            $el[0].files = myFileList
+            $el[0].dispatchEvent(new Event('change', {bubbles: true}))
+            
+        })
+        
     })
 })
 
