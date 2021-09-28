@@ -5,7 +5,7 @@
   "gender": "Female",
   "mobile":"3534123456",
   "subjects": "prueba",
-  "current_address": "lisandro",
+  
   "date":[
     "December",
     "1990",
@@ -19,7 +19,18 @@
     "Music"
   ],
 
-  "picture": "superpoderosas.png"
+  "picture": "superpoderosas.png",
+
+  "current_address": "lisandro",
+
+  "estado":[
+    "NCR"
+  ],
+
+  "ciudad":[
+    "Delhi"
+  ]
+
 
 
 }
