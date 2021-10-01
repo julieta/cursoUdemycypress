@@ -2,7 +2,7 @@
 
 
 
-//Swite de caso de pruebas avanzados
+//Swite de caso de pruebas datadriver
 describe('Segundo conjunto de casos de pruebas avanzadas', function(){
     before(function(){
         //cargamos los valores del archivo example.json en un objeto de datos
@@ -18,6 +18,7 @@ describe('Segundo conjunto de casos de pruebas avanzadas', function(){
         cy.visit('https://demoqa.com/automation-practice-form')
     })
 
+    //caso 7
     it('Llenamos nuestro primer formulario utilizando data', function(){
         cy.get('#firstName').type(this.datos.name)
         cy.get('#lastName').type(this.datos.last_name)

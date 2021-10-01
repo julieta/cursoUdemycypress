@@ -1,7 +1,19 @@
 /// <reference types="Cypress"/>
 
+//importamos clases de PAge objects
+import AddressPage from '../../support/PageObjects/AddressPage'
+import AuthenticationPage from '../../support/PageObjects/AuthenticationPage'
+import HomePage from '../../support/PageObjects/HomePage'
+import PaymentPage from '../../support/PageObjects/PaymentPage'
+import ShippingPage from '../../support/PageObjects/ShippingPage'
+import ShoppingPage from '../../support/PageObjects/ShoppingPage'
+
+
+
 //suite de casos que contiene cada caso
 describe('Primer conjunto de casos de prueba', function()
+    const addressPage = new AddressPage
+
 {
     beforeEach(()=>{
         //ingresamos a la pagina

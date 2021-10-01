@@ -23,3 +23,46 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('agregarElementoAlCarrito', (nombreDeproducto) => {
+    cy.get("div[class='product-thumb']").as('contenedorDeProductos')
+    cy.get("@contenedorDeProductos")
+        .each(($el, index, $list) => {
+
+            cy.get(':has(.caption) h4 a').eq(index).then(function ($el1) {
+                let producto = $el1.text()
+                cy.log(producto)
+
+                if(producto.includes(nombreDeproducto)) {
+                    cy.log('Se ha encontrado el elemento buscado')
+                    cy.get('@contenedorDeProductos').eq(index).find("button[onclick^='cart.add']").click()
+                    cy.get('.alert.alert-success.alert-dismissible').should('contain.text',nombreDeproducto)
+                    
+                }
+
+            })
+        })
+})
+/*
+Cypress.Commands.add('verificamosElementosEnCarritoDD', (nombreDeproducto) => {
+    cy.get("tr:has(button[onclick*='cart.remove]) td[class='text-left'] a")
+        .each(($el, index, $list) => {
+            cy.get("td[class='text-left'] a").eq(index).then(function ($el1) {
+                let producto = $el1.text()
+                cy.log(producto)
+                cy.get("tr:has(button[onclick*='cart.remove'])").should('contain.text', nombreDeProducto)
+            })
+            
+        })
+})
+*/
+
+Cypress.Commands.add('verificamosElementoEnCarritoDD', (nombreDeProducto) => {
+    cy.get("tr:has(button[onclick*='cart.remove']) td[class='text-left'] a")
+        .each(($el, index, $list) => {
+            cy.get("td[class='text-left'] a").eq(index).then(function ($el1) {
+                let producto = $el1.text()
+                cy.log(producto)
+                cy.get("tr:has(button[onclick*='cart.remove'])").should('contain.text', nombreDeProducto)
+            })
+        })
+})
