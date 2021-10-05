@@ -2,11 +2,11 @@ class ShippingPage
 {
     getTermsOfServiceCheckbox()
     {
-        cy.get('#cgh')
+        return cy.get('#cgh')
     }
     getPoceedToCheckoutButton()
     {
-        cy.get('.cart_navigation > .button')
+        return cy.get('.cart_navigation > .button')
     }
 
     

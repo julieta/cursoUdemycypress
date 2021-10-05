@@ -2,17 +2,17 @@ class PaymentPage
 {
     getPayByBankWireOptionButton()
     {
-        cy.get('.bankwire')
+        return cy.get('.bankwire')
     }
     
     getIConfirmMyOrderButton()
     {
-        cy.get('.cart_navigation > .button')
+        return cy.get('.cart_navigation > .button')
     }
     
     getDescriptionTitleText()
     {
-        cy.get('.cheque-indent > .dark')
+        return cy.get('.cheque-indent > .dark')
     }
 }
 export default PaymentPage;

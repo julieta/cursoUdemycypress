@@ -12,9 +12,15 @@ import ShoppingPage from '../../support/PageObjects/ShoppingPage'
 
 //suite de casos que contiene cada caso
 describe('Primer conjunto de casos de prueba', function()
-    const addressPage = new AddressPage
-
 {
+    const addressPage = new AddressPage()
+    const authenticationPage = new AddressPage()
+    const homePage = new AddressPage()
+    const paymentPage = new AddressPage()
+    const shippingPage = new AddressPage()
+    const shoppingPage = new AddressPage()
+    
+
     beforeEach(()=>{
         //ingresamos a la pagina
         cy.visit("http://www.automationpractice.com/index.php")
@@ -89,6 +95,10 @@ describe('Primer conjunto de casos de prueba', function()
     */
     //caso6
     it('verificador de busqueda', function(){
+        
+
+
+
         cy.get('#search_query_top').type('Blouse')
         cy.get('#searchbox > .btn').click()
         cy.get('.product-container:has(.product-name[title="Blouse"]) .ajax_add_to_cart_button').click()

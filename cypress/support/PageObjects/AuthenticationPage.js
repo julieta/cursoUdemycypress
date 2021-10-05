@@ -2,11 +2,11 @@ class AuthenticationPage
 {
     getEmailAddressInput()
     {
-        cy.get('#email')
+        return cy.get('#email')
     }
     getPasswordInput()
     {
-        cy.get('#passwd')
+        return cy.get('#passwd')
     }
    
 }
