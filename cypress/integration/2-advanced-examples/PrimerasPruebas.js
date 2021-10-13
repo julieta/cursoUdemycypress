@@ -6,7 +6,7 @@ import AuthenticationPage from '../../support/PageObjects/AuthenticationPage'
 import HomePage from '../../support/PageObjects/HomePage'
 import PaymentPage from '../../support/PageObjects/PaymentPage'
 import ShippingPage from '../../support/PageObjects/ShippingPage'
-import ShoppingPage from '../../support/PageObjects/ShoppingPage'
+import ShoppingCartSummaryPage from '../../support/PageObjects/ShoppingCartSummaryPage'
 
 
 
@@ -14,11 +14,11 @@ import ShoppingPage from '../../support/PageObjects/ShoppingPage'
 describe('Primer conjunto de casos de prueba', function()
 {
     const addressPage = new AddressPage()
-    const authenticationPage = new AddressPage()
-    const homePage = new AddressPage()
-    const paymentPage = new AddressPage()
-    const shippingPage = new AddressPage()
-    const shoppingPage = new AddressPage()
+    const authenticationPage = new AuthenticationPage()
+    const homePage = new HomePage()
+    const paymentPage = new PaymentPage()
+    const shippingPage = new ShippingPage()
+    const shoppingCartSummaryPage = new ShoppingCartSummaryPage()
     
 
     beforeEach(()=>{
@@ -94,31 +94,31 @@ describe('Primer conjunto de casos de prueba', function()
     })
     */
     //caso6
-    it('verificador de busqueda', function(){
+    it('crear comprar desde cero', function(){
+        homePage.getSearchBoxInput().type('Blouse')
+        homePage.getSearchBoxButton().click()
+        homePage.getAddToCardElementButton('Blouse').click()
+        //cy.wait(5000)
+        homePage.getProceedToCkeckoutButton().click()
+
         
-
-
-
-        cy.get('#search_query_top').type('Blouse')
-        cy.get('#searchbox > .btn').click()
-        cy.get('.product-container:has(.product-name[title="Blouse"]) .ajax_add_to_cart_button').click()
-        cy.wait(5000)
-        cy.get('.button-medium[title="Proceed to checkout"]').click()
+        shoppingCartSummaryPage.getProductNameText().should('contain.text', 'Blouse')
+        shoppingCartSummaryPage.getProductPriceText().should('contain.text', '27.00')
+        shoppingCartSummaryPage.getProceedToCheckoutButton().click()
         
+        authenticationPage.getEmailAddressInput().type('julieta.testing@gmail.com')
+        authenticationPage.getPasswordInput().type('testing123')
+        authenticationPage.getSignInButton().click()
+        
+        addressPage.getProceedToCheckoutButton().click()
+        
+        
+        shippingPage.getTermsOfServiceCheckbox().check().should('be.checked')
+        shippingPage.getPoceedToCheckoutButton().click()
 
-        cy.get('tr[id^=product]').find('.product-name > a').should('contain.text', 'Blouse')
-        cy.get('tr[id^=product]').find('.price').should('contain.text', '27.00')
-        cy.get('.cart_navigation > .button').click()
-
-        cy.get('#email').type('julieta.testing@gmail.com')
-        cy.get('#passwd').type('testing123')
-        cy.get('#SubmitLogin').click()
-        cy.get('.cart_navigation > .button').click()
-        cy.get('#cgv').check().should('be.checked')
-        cy.get('.cart_navigation > .button').click()
-        cy.get('.bankwire').click()
-        cy.get('.cart_navigation > .button').click()
-        cy.get('.cheque-indent > .dark').should('contain.text','Your order on My Store is complete.')
+        paymentPage.getPayByBankWireOptionButton().click()
+        paymentPage.getIConfirmMyOrderButton().click()
+        paymentPage.getDescriptionTitleText().should('contain.text','Your order on My Store is complete.')
        
 
     })

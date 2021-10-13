@@ -1,4 +1,4 @@
-class ShoppingCartSummary
+class ShoppingCartSummaryPage
 {
     getProductNameText()
     {
@@ -13,4 +13,4 @@ class ShoppingCartSummary
         return cy.get('.cart_navigation > .button')
     }
 }
-export default ShoppingCartSummary;
+export default ShoppingCartSummaryPage;

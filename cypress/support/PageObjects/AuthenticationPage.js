@@ -8,6 +8,10 @@ class AuthenticationPage
     {
         return cy.get('#passwd')
     }
+    getSignInButton()
+    {
+        return cy.get('#SubmitLogin')
+    }
    
 }
 export default AuthenticationPage;
